@@ -1,5 +1,4 @@
 class RarProjectSettingsController < ApplicationController
-  unloadable
   before_action :find_project, :authorize
 
   def index
@@ -19,11 +18,10 @@ class RarProjectSettingsController < ApplicationController
     else
       flash[:warning] = "Update error."
     end
-    redirect_to :controller => 'projects', :action => 'settings', :id => @project.id, :tab => 'readme_at_repositories'
+    redirect_to controller: 'projects', action: 'settings', id: @project.id, tab: 'readme_at_repositories'
   end
 
   def find_project
     @project = Project.find(params[:project_id])
   end
-
 end
